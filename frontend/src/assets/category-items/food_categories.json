@@ -1,0 +1,26 @@
+[
+	{
+		"id": 0,
+		"title": "Condiments",
+		"subtitle": "Sweet and savory sauces relishes spreads and seasonings",
+		"description": "A condiment is a supplemental food (such as a sauce or powder) that is added to some foods to impart a particular flavor, enhance their flavor, or, in some cultures, to complement the dish, but that cannot stand alone as a dish."
+	},
+	{
+		"id": 1,
+		"title": "Beverages",
+		"subtitle": "Soft drinks coffees teas beers and ales",
+		"description": "A drink or beverage is a liquid intended for human consumption. In addition to their basic function of satisfying thirst, drinks play important roles in human culture. Common types of drinks include plain drinking water, milk, juice, smoothies and soft drinks. Traditionally warm beverages include coffee, tea, and hot chocolate. Caffeinated drinks that contain the stimulant caffeine have a long history."
+	},
+	{
+		"id": 2,
+		"title": "Confections",
+		"subtitle": "Desserts candies and sweet breads",
+		"description": "Confectionery is the art of making confections, or sweet foods. Confections are items that are rich in sugar and carbohydrates although exact definitions are difficult. In general, however, confections are divided into two broad and somewhat overlapping categories: bakers' confections and sugar confections."
+	},
+	{
+		"id": 3,
+		"title": "Dairy Products",
+		"subtitle": "Cheeses",
+		"description": "Dairy products or milk products, also known as lacticinia, are food products made from (or containing) milk. The most common dairy animals are cow, water buffalo, nanny goat, and ewe. Dairy products include common grocery store food around the world such as yogurt, cheese, milk and butter."
+	}
+]

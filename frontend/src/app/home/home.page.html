@@ -21,7 +21,7 @@
   <div class="container">
     <label class="list">H λίστα σας</label>
     <div class="categories">
-      <app-category></app-category>
+      <app-category *ngFor="let category of categories" [category]="category"></app-category>
     </div>
   </div>
 </ion-content>

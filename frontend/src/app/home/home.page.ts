@@ -1,22 +1,41 @@
 import { Component, OnInit } from '@angular/core';
+import Category from '../models/category';
+import { FoodCategoryService } from '../services/food-category.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
+  categories: Category[] = [];
 
-  constructor() { }
   currentDateTime: string = '';
   private timer: any;
 
+  constructor(private foodCategoryService: FoodCategoryService) {
+    
+  }
+
   ngOnInit() {
+    this.foodCategoryService.loadCategoriesFromJSON().subscribe({
+      next: (data) => {
+        this.categories = data;  
+          console.log('Categories loaded:', this.categories);
+      },
+      error: (err) => {
+        console.error('Error loading categories:', err);
+      }
+    });
+
     this.setCurrentDateTime();
 
     //change date-time in every second
     this.timer = setInterval(() => {
       this.setCurrentDateTime();
     }, 1000);
+
+    // Mock data
+
   }
 
   ngOnDestroy() {
