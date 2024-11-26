@@ -49,3 +49,31 @@ ion-content {
   padding: 10px 20px;
   margin: 20px 0;
 }
+
+.container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+/*Buttons */
+ion-button {
+  --background: #1640A9;
+  --color: #ffffff;
+  --font-family: 'Arial', sans-serif;
+  --font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  --border-radius: 12px;
+  display: flex;
+  align-items: center;
+  height: 5vh;
+}
+
+.add-category {
+  width: 18px;
+  height: 18px;
+  margin: 0px 20px;
+}

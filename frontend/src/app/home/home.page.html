@@ -19,6 +19,17 @@
   </ion-header>
 
   <div class="container">
+    <div class="container-header">
+      <ion-col size="10">
+        <app-category-search></app-category-search>
+      </ion-col>
+      <ion-col size="2">
+        <ion-button>
+          <img src="assets/add-category/white/add.svg" alt="Add Category" class="add-category" />
+          Νέα κατηγορία
+        </ion-button>
+      </ion-col>
+    </div>
     <label class="list">H λίστα σας</label>
     <div class="categories">
       <app-category *ngFor="let category of categories" [category]="category"></app-category>
