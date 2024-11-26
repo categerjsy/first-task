@@ -1,3 +1,22 @@
-<p>
-  category works!FVdXCVXCVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-</p>
+<div class="category-component">
+
+  <div class="header">
+    <ion-col size="10">
+      <div class="header-titles">
+        <label for="title" class="category-title">{{title}}</label>
+        <label for="subtitle" class="category-subtitle">{{subtitle}}</label>
+      </div>
+    </ion-col>
+    <ion-col size="2" class="ion-text-right">
+      <ion-col size="1">
+        <img src="assets/edit-icon/write.svg" />
+      </ion-col>
+      <ion-col size="1">
+        <img src="assets/delete-bucket/delete.svg" />
+      </ion-col>
+    </ion-col>
+  </div>
+  <div class="description">
+    {{description}}
+  </div>
+</div>

@@ -3,11 +3,11 @@ ion-toolbar {
   --color: #212121;
 }
 
-.bar-content{
-display:flex;
-justify-content: space-between;
-align-items: center;
-padding: 0% 1%;
+.bar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0% 1%;
 }
 
 ion-title {
@@ -31,4 +31,21 @@ ion-title {
 
 ion-content {
   --background: #F1F7FE;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.list {
+  font-size: 24px;
+  font-weight: 400;
+  color: #707070;
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+
+.categories {
+  padding: 10px 20px;
+  margin: 20px 0;
 }
