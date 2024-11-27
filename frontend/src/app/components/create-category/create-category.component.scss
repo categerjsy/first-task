@@ -18,7 +18,8 @@
     padding: 1%;
     border-bottom: 2px solid #F6F6F6;
 }
-.left-header{
+
+.left-header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -59,6 +60,7 @@ img {
     --placeholder-color: #707070;
     font-size: 16px;
     font-family: SF Pro Text;
+    color: #212121;
 }
 
 .submit-btn {

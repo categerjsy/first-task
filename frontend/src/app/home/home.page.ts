@@ -11,6 +11,7 @@ export class HomePage implements OnInit {
   currentDateTime: string = '';
   private timer: any;
   createCategory: boolean = false;
+  openAlert: boolean = false;
 
   constructor(private foodCategoryService: FoodCategoryService) {
 
@@ -58,6 +59,16 @@ export class HomePage implements OnInit {
 
   getClose($event: any) {
     this.createCategory = $event;
+  }
+
+  getNewCategory($event: Category) {
+    this.categories.push($event);
+    this.createCategory = false;
+    this.openAlert = true;
+  }
+
+  getCloseAlert($event: any) {
+    this.openAlert = false;
   }
 
 }
