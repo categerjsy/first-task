@@ -17,7 +17,7 @@ export class CustomAlertComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.message = `Η κατηγορία ${this.title} αποθηκεύτηκε επιτυχώς`
+    this.message = `Οι πληροφορίες της κατηγορίας ${this.title} ενημερώθηκαν επιτυχώς.`
   }
 
 
