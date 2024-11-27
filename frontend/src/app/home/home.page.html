@@ -24,11 +24,15 @@
         <app-category-search></app-category-search>
       </ion-col>
       <ion-col size="2">
-        <ion-button>
-          <img src="assets/add-category/white/add.svg" alt="Add Category" class="add-category" />
+        <ion-button (click)="createCategory=!createCategory">
+          <img src="assets/add-category/white/add.svg" alt="Add Category" class="add-category"
+             />
           Νέα κατηγορία
         </ion-button>
       </ion-col>
+    </div>
+    <div class="element" *ngIf="createCategory">
+      <app-create-category (categoryClosed)="getClose($event)"></app-create-category>
     </div>
     <label class="list">H λίστα σας</label>
     <div class="categories">

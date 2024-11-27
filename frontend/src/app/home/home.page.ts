@@ -8,19 +8,19 @@ import { FoodCategoryService } from '../services/food-category.service';
 })
 export class HomePage implements OnInit {
   categories: Category[] = [];
-
   currentDateTime: string = '';
   private timer: any;
+  createCategory: boolean = false;
 
   constructor(private foodCategoryService: FoodCategoryService) {
-    
+
   }
 
   ngOnInit() {
     this.foodCategoryService.loadCategoriesFromJSON().subscribe({
       next: (data) => {
-        this.categories = data;  
-          console.log('Categories loaded:', this.categories);
+        this.categories = data;
+        console.log('Categories loaded:', this.categories);
       },
       error: (err) => {
         console.error('Error loading categories:', err);
@@ -54,6 +54,10 @@ export class HomePage implements OnInit {
     const minutes = String(now.getMinutes()).padStart(2, '0');
 
     this.currentDateTime = `${day}/${month}/${year} ${hours}:${minutes}`;
+  }
+
+  getClose($event: any) {
+    this.createCategory = $event;
   }
 
 }
