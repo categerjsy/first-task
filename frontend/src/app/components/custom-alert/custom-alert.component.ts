@@ -1,16 +1,26 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-custom-alert',
   templateUrl: './custom-alert.component.html',
   styleUrls: ['./custom-alert.component.scss'],
 })
-export class CustomAlertComponent  implements OnInit {
+export class CustomAlertComponent implements OnInit {
   @Output() alertClose = new EventEmitter();
+  @Input() title: String | undefined;
+  @Input() isEdit: boolean = false;
+  message: String = ""
   constructor() { }
 
-  ngOnInit() { }
-  
+  ngOnInit() {
+    this.message = `Η κατηγορία ${this.title} δημιουργήθηκε και αποθηκεύτηκε επιτυχώς`
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.message = `Η κατηγορία ${this.title} αποθηκεύτηκε επιτυχώς`
+  }
+
+
   closeAlert() {
     this.alertClose.emit(false);
   }

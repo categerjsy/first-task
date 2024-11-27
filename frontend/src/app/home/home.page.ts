@@ -12,6 +12,9 @@ export class HomePage implements OnInit {
   private timer: any;
   createCategory: boolean = false;
   openAlert: boolean = false;
+  editCategory: Category | undefined;
+  isEditAlert: boolean = false;
+  alertTitle: String | undefined;
 
   constructor(private foodCategoryService: FoodCategoryService) {
 
@@ -57,6 +60,10 @@ export class HomePage implements OnInit {
     this.currentDateTime = `${day}/${month}/${year} ${hours}:${minutes}`;
   }
 
+  addCategory() {
+    this.createCategory = !this.createCategory;
+    this.editCategory = undefined;
+  }
   getClose($event: any) {
     this.createCategory = $event;
   }
@@ -65,10 +72,29 @@ export class HomePage implements OnInit {
     this.categories.push($event);
     this.createCategory = false;
     this.openAlert = true;
+    this.alertTitle = this.categories[this.categories.length - 1].title;
   }
 
   getCloseAlert($event: any) {
     this.openAlert = false;
+  }
+  editACategory($event: any) {
+    console.log('edit category:', $event);
+    this.editCategory = $event;
+    this.createCategory = true;
+  }
+
+  updateCategory($event: any) {
+    const index = this.categories.findIndex((cat) => cat.id === $event.id);
+
+    this.categories[index] = $event;
+    console.log('Category updated:', this.categories[index]);
+
+
+    this.createCategory = false;
+    this.editCategory = undefined;
+    this.openAlert = true;
+    this.alertTitle = this.categories[index].title;
   }
 
 }

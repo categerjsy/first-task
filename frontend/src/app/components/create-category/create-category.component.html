@@ -2,8 +2,10 @@
 
   <div class="header">
     <div class="left-header">
-      <img src="assets/add-category/blue/add.svg" />
-      <label for="title" class="category-title">Προσθήκη κατηγορίας</label>
+      <img src="assets/add-category/blue/add.svg" *ngIf="!isEdit" />
+      <img src="assets/edit-icon/write.svg" *ngIf="isEdit" />
+      <label for="title" class="category-title" *ngIf="!isEdit">Προσθήκη κατηγορίας</label>
+      <label for="title" class="category-title" *ngIf="isEdit">Επεξεργασία κατηγορίας</label>
     </div>
     <img src="assets/close-btn/close.svg" (click)="closeCategory()" />
   </div>
@@ -34,8 +36,11 @@
   </div>
   <div class="third-line">
     <ion-col size="3">
-      <ion-button class="submit-btn" fill="solid" (click)="createCategory()"    [disabled]="!isFormValid()">
+      <ion-button class="submit-btn" fill="solid" (click)="createCategory()" [disabled]="!isFormValid()" *ngIf="!isEdit">
         Προσθήκη
+      </ion-button>
+      <ion-button class="submit-btn" fill="solid" (click)="editACategory()" [disabled]="!isFormValid()" *ngIf="isEdit">
+      Αποθήκευση
       </ion-button>
     </ion-col>
   </div>

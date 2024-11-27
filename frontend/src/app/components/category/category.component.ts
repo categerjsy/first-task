@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Category from 'src/app/models/category';
 
 @Component({
@@ -8,9 +8,12 @@ import Category from 'src/app/models/category';
 })
 export class CategoryComponent {
   @Input() category: Category | undefined;
-
+  @Output() editCategoryEdit = new EventEmitter<Category>();
   constructor() { }
 
-
+  edit() {
+    this.editCategoryEdit.emit(this.category);
+    console.log(this.category);
+  }
 
 }

@@ -24,21 +24,23 @@
         <app-category-search></app-category-search>
       </ion-col>
       <ion-col size="2">
-        <ion-button (click)="createCategory=!createCategory">
+        <ion-button (click)="addCategory()">
           <img src="assets/add-category/white/add.svg" alt="Add Category" class="add-category" />
           Νέα κατηγορία
         </ion-button>
       </ion-col>
     </div>
     <div class="element" *ngIf="createCategory">
-      <app-create-category (categoryClosed)="getClose($event)"
-        (categoryCreated)="getNewCategory($event)"></app-create-category>
+      <app-create-category (categoryClosed)="getClose($event)" [editCategory]="editCategory" 
+        (categoryEdited)="updateCategory($event)" (categoryCreated)="getNewCategory($event)"></app-create-category>
     </div>
     <label class="list">H λίστα σας</label>
     <div class="categories">
-      <app-category *ngFor="let category of categories" [category]="category"></app-category>
+      <app-category *ngFor="let category of categories" [category]="category"
+        (editCategoryEdit)="editACategory($event)"></app-category>
     </div>
   </div>
-<app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)"></app-custom-alert>
-  
+  <app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)" [title]="alertTitle"
+    [isEdit]="isEditAlert"></app-custom-alert>
+
 </ion-content>

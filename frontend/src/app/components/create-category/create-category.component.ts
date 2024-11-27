@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import Category from 'src/app/models/category';
 import { FoodCategoryService } from '../../services/food-category.service';
 
@@ -13,6 +13,9 @@ export class CreateCategoryComponent implements OnInit {
   @Output() categoryCreated = new EventEmitter<Category>();
   newCategory: Category = new Category();
   categories: Category[] = [];
+  isEdit = false;
+  @Input() editCategory: Category | undefined;
+  @Output() categoryEdited = new EventEmitter<Category>();
 
   constructor(private foodCategoryService: FoodCategoryService) { }
 
@@ -26,6 +29,15 @@ export class CreateCategoryComponent implements OnInit {
         console.error('Error loading categories:', err);
       }
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    
+    if (this.editCategory) {
+      this.isEdit = true;
+      this.newCategory = { ...this.editCategory };
+    }
+
   }
 
   closeCategory() {
@@ -44,6 +56,10 @@ export class CreateCategoryComponent implements OnInit {
     }
   }
 
+  editACategory() {
+    this.editCategory = this.newCategory;
+    this.categoryEdited.emit(this.editCategory);
+  }
 
 
 }
