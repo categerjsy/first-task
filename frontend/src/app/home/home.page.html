@@ -36,11 +36,11 @@
     </div>
     <label class="list">H λίστα σας</label>
     <div class="categories">
-      <app-category *ngFor="let category of categories" [category]="category"
+      <app-category *ngFor="let category of categories" [category]="category" (deleteCategory)="getDelete($event)"
         (editCategoryEdit)="editACategory($event)"></app-category>
     </div>
   </div>
-  <app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)" [title]="alertTitle"
-    [isEdit]="isEditAlert"></app-custom-alert>
+  <app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)" [title]="alertTitle" (deleteClose)="deleteOK($event)"
+    [isDelete]="isDelete"></app-custom-alert>
 
 </ion-content>

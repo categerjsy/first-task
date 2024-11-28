@@ -8,8 +8,9 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@
 export class CustomAlertComponent implements OnInit {
   @Output() alertClose = new EventEmitter();
   @Input() title: String | undefined;
-  @Input() isEdit: boolean = false;
   message: String = ""
+  @Input() isDelete: boolean = false;
+  @Output() deleteClose = new EventEmitter();
   constructor() { }
 
   ngOnInit() {
@@ -17,12 +18,21 @@ export class CustomAlertComponent implements OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.message = `Οι πληροφορίες της κατηγορίας ${this.title} ενημερώθηκαν επιτυχώς.`
+    if (this.isDelete) {
+      this.message = `Είστε σίγουροι ες πως επιθυμείτε να διαγράψετε τη κατηγορία ${ this.title };`
+    }
+    else {
+      this.message = `Οι πληροφορίες της κατηγορίας ${this.title} ενημερώθηκαν επιτυχώς.`
+    }
   }
 
 
   closeAlert() {
     this.alertClose.emit(false);
+  }
+  
+  deleteCategory() {
+    this.deleteClose.emit(true);
   }
 
 }

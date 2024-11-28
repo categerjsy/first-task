@@ -27,7 +27,7 @@
     align-items: center;
 }
 
-.close-alert{
+.close-alert {
     margin-left: 360px;
 }
 
@@ -61,9 +61,20 @@
     padding: 0.5%;
 }
 
+.button-line {
+    display: flex;
+    justify-content: space-between;
+    gap:30px;
+}
+
 ion-button {
     --background: #F1F7FE;
-    border:none;
+    border: none;
     text-transform: capitalize;
     cursor: pointer;
+}
+
+ion-button.delete {
+    --background: #932222;
+    --color: #ffffff;
 }

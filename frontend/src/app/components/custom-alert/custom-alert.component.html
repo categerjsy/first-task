@@ -1,27 +1,38 @@
 <div class="overlay">
   <div class="alertComponent">
 
-   <div class="close-alert" (click)="closeAlert()">
-    <img src="assets/close-btn/close.svg" alt="Close" class="close-btn"/>
-   </div>
+    <div class="close-alert" (click)="closeAlert()">
+      <img src="assets/close-btn/close.svg" alt="Close" class="close-btn" />
+    </div>
 
-   <div class="image">
-    <img src="assets/check-mark/check.svg" alt="Alert-tick" class="alert-photo"/>
-   </div>
+    <div class="image">
+      <img src="assets/check-mark/check.svg" alt="Alert-tick" class="alert-photo" *ngIf="!isDelete" />
+      <img src="assets/delete-bucket/delete.svg" alt="Alert-cross" class="alert-photo" *ngIf="isDelete" />
+    </div>
 
-   <div class="title">
-   <label for="teleia" class="title">Τέλεια</label>
-   </div>
+    <div class="title">
+      <label for="teleia" class="title" *ngIf="!isDelete">Τέλεια</label>
+      <label for="teleia" class="title" *ngIf="isDelete">Διαγραφή;</label>
+    </div>
 
-   <div class="subtitle">
-   {{message}}
-   </div>
+    <div class="subtitle">
+      {{message}}
+    </div>
 
-   <div class="button-line">
-    <ion-button (click)="closeAlert()">
-     Συνέχεια
-    </ion-button>
-   </div>
+    <div class="button-line" *ngIf="!isDelete">
+      <ion-button (click)="closeAlert()">
+        Συνέχεια
+      </ion-button>
+    </div>
+
+    <div class="button-line" *ngIf="isDelete">
+      <ion-button (click)="closeAlert()">
+        Aκύρωση
+      </ion-button>
+      <ion-button class="delete" (click)="deleteCategory()">
+        Επιβεβαίωση
+      </ion-button>
+    </div>
 
   </div>
 </div>

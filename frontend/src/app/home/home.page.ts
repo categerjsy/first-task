@@ -13,8 +13,9 @@ export class HomePage implements OnInit {
   createCategory: boolean = false;
   openAlert: boolean = false;
   editCategory: Category | undefined;
-  isEditAlert: boolean = false;
+  isDelete: boolean = false;
   alertTitle: String | undefined;
+  deleteCategory: Category | undefined;
 
   constructor(private foodCategoryService: FoodCategoryService) {
 
@@ -97,4 +98,18 @@ export class HomePage implements OnInit {
     this.alertTitle = this.categories[index].title;
   }
 
+  getDelete($event: any) {
+    this.isDelete = true;
+    this.openAlert = true;
+    this.deleteCategory = $event;
+    this.alertTitle = this.deleteCategory?.title;
+    console.log('delete category:', $event);
+  }
+
+  deleteOK($event: any) {
+    this.openAlert = false;
+    const index = this.categories.findIndex((cat) => cat.id === this.deleteCategory?.id);
+    this.categories.splice(index, 1);
+    this.isDelete = false;
+  }
 }
