@@ -13,27 +13,31 @@ export class CustomAlertComponent implements OnInit {
   @Input() isEdit: boolean = false;
 
   @Output() deleteClose = new EventEmitter();
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
-    this.message = `Η κατηγορία ${this.title} δημιουργήθηκε και αποθηκεύτηκε επιτυχώς`
-    if (this.isDelete) {
-      this.message = `Είστε σίγουροι ες πως επιθυμείτε να διαγράψετε τη κατηγορία ${this.title};`
-    }
-    if (this.isEdit) {
-      this.message = `Οι πληροφορίες της κατηγορίας ${this.title} ενημερώθηκαν επιτυχώς.`
-    }
+    this.updateMessage();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.isEdit) {
-      this.message = `Οι πληροφορίες της κατηγορίας ${this.title} ενημερώθηκαν επιτυχώς.`
+    if (changes['isDelete'] || changes['isEdit'] || changes['title']) {
+      this.updateMessage();
     }
-    else {
-      this.message = `Η κατηγορία ${this.title} δημιουργήθηκε και αποθηκεύτηκε επιτυχώς`
+  }
+  updateMessage() {
+    if (this.isDelete) {
+      this.message = `Είστε σίγουροι/ες πως επιθυμείτε να διαγράψετε τη κατηγορία ${this.title}?`;
+    } else if (this.isEdit) {
+      this.message = `Οι πληροφορίες της κατηγορίας ${this.title} ενημερώθηκαν επιτυχώς.`;
+    } else {
+      this.message = `Η κατηγορία ${this.title} δημιουργήθηκε και αποθηκεύτηκε επιτυχώς.`;
     }
   }
   closeAlert() {
+    this.isEdit = false;
+    this.isDelete = false;
     this.alertClose.emit(false);
   }
 
