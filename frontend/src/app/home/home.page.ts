@@ -16,6 +16,9 @@ export class HomePage implements OnInit {
   isDelete: boolean = false;
   alertTitle: String | undefined;
   deleteCategory: Category | undefined;
+  filteredCategories: Category[] = [];
+  searchTerm: string = '';
+  searchIt: boolean = false;
 
   constructor(private foodCategoryService: FoodCategoryService) {
 
@@ -62,7 +65,7 @@ export class HomePage implements OnInit {
   }
 
   addCategory() {
-    this.createCategory = !this.createCategory;
+    this.createCategory = true;
     this.editCategory = undefined;
   }
   getClose($event: any) {
@@ -111,5 +114,27 @@ export class HomePage implements OnInit {
     const index = this.categories.findIndex((cat) => cat.id === this.deleteCategory?.id);
     this.categories.splice(index, 1);
     this.isDelete = false;
+  }
+
+  getSearch($event: string) {
+    this.searchTerm = $event;
+    console.log('search term:', $event);
+    if (this.searchTerm == '') {
+      this.searchIt = false;
+    }
+    else {
+      this.searchIt = true;
+    }
+    const term = this.searchTerm.toLowerCase().trim();
+
+    if (!term) {
+      this.filteredCategories = [...this.categories];
+    } else {
+      this.filteredCategories = this.categories.filter(
+        (category) =>
+          category.title?.toLowerCase().includes(term) ||
+          category.subtitle?.toLowerCase().includes(term)
+      );
+    }
   }
 }

@@ -37,9 +37,9 @@ ion-content {
   margin-top: 20px;
 }
 
-.element{
-    padding: 10px 20px;
-      margin: 20px 0;
+.element {
+  padding: 10px 20px;
+  margin: 20px 0;
 }
 
 .list {
@@ -73,12 +73,26 @@ ion-button {
   text-transform: none;
   --border-radius: 12px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  height: 5vh;
+  height: 6vh;
 }
 
 .add-category {
-  width: 18px;
-  height: 18px;
-  margin: 0px 20px;
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.no-category {
+  font-size: 16px;
+  font-family: SF Pro Text;
+  color: #999999;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background-color: #f9f9f9;
 }

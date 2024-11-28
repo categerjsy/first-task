@@ -21,7 +21,7 @@
   <div class="container">
     <div class="container-header">
       <ion-col size="10">
-        <app-category-search></app-category-search>
+        <app-category-search (search)="getSearch($event)"></app-category-search>
       </ion-col>
       <ion-col size="2">
         <ion-button (click)="addCategory()">
@@ -31,16 +31,26 @@
       </ion-col>
     </div>
     <div class="element" *ngIf="createCategory">
-      <app-create-category (categoryClosed)="getClose($event)" [editCategory]="editCategory" 
+      <app-create-category (categoryClosed)="getClose($event)" [editCategory]="editCategory"
         (categoryEdited)="updateCategory($event)" (categoryCreated)="getNewCategory($event)"></app-create-category>
     </div>
+
+    <div *ngIf="searchIt">
+      <label class="list">H αναζητηση σας</label>
+      <div class="categories">
+        <app-category *ngFor="let category of filteredCategories" [category]="category">
+        </app-category>
+        <p class="no-category" *ngIf="filteredCategories.length === 0">Δεν υπάρχει διαθέσιμη κατηγορία</p>
+      </div>
+    </div>
+
     <label class="list">H λίστα σας</label>
     <div class="categories">
       <app-category *ngFor="let category of categories" [category]="category" (deleteCategory)="getDelete($event)"
         (editCategoryEdit)="editACategory($event)"></app-category>
     </div>
   </div>
-  <app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)" [title]="alertTitle" (deleteClose)="deleteOK($event)"
-    [isDelete]="isDelete"></app-custom-alert>
+  <app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)" [title]="alertTitle"
+    (deleteClose)="deleteOK($event)" [isDelete]="isDelete"></app-custom-alert>
 
 </ion-content>
