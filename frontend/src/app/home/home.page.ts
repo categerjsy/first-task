@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
   openAlert: boolean = false;
   editCategory: Category | undefined;
   isDelete: boolean = false;
+  isEdit: boolean = false;
   alertTitle: String | undefined;
   deleteCategory: Category | undefined;
   filteredCategories: Category[] = [];
@@ -66,6 +67,7 @@ export class HomePage implements OnInit {
 
   addCategory() {
     this.createCategory = true;
+    this.isEdit = false;
     this.editCategory = undefined;
   }
   getClose($event: any) {
@@ -83,6 +85,8 @@ export class HomePage implements OnInit {
     this.openAlert = false;
   }
   editACategory($event: any) {
+    this.isEdit = true;
+    console.log(this.isEdit);
     console.log('edit category:', $event);
     this.editCategory = $event;
     this.createCategory = true;

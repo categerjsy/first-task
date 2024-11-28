@@ -48,9 +48,10 @@
     <div class="categories">
       <app-category *ngFor="let category of categories" [category]="category" (deleteCategory)="getDelete($event)"
         (editCategoryEdit)="editACategory($event)"></app-category>
+      <p class="no-category" *ngIf="categories.length === 0">Δεν υπάρχουν κατηγορίες, παρακαλούμε προσθέστε</p>
     </div>
   </div>
   <app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)" [title]="alertTitle"
-    (deleteClose)="deleteOK($event)" [isDelete]="isDelete"></app-custom-alert>
+    (deleteClose)="deleteOK($event)" [isDelete]="isDelete" [isEdit]="isEdit"></app-custom-alert>
 
 </ion-content>
