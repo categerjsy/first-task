@@ -46,11 +46,14 @@ export class CreateCategoryComponent implements OnInit {
 
   isFormValid(): boolean {
     const { title, subtitle, description } = this.newCategory;
-    return !!title && !!subtitle && !!description && !this.categories.some(category => category.title === title);
+    return !!title?.trim() && !!subtitle?.trim() && !!description?.trim() && !this.categories.some(category => category.title === title);
   }
 
   createCategory() {
     if (this.newCategory.title && this.newCategory.subtitle && this.newCategory.description) {
+      this.newCategory.title = this.newCategory.title.trim();
+      this.newCategory.subtitle = this.newCategory.subtitle.trim();
+      this.newCategory.description = this.newCategory.description.trim();
       this.newCategory.id = String(Math.max(...this.categories.map(c => Number(c.id) || 0), 0) + 1);
       this.categoryCreated.emit(this.newCategory);
     }
