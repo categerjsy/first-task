@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -35,11 +35,12 @@
     width: 24px;
     height: 24px;
     display: flex;
+    cursor: pointer;
 }
 
 .alert-photo {
-    width: 150px;
-    height: 150px;
+    width: 80px;
+    height: 80px;
     margin-top: 10px;
     margin-bottom: 20px;
 }
@@ -68,10 +69,15 @@
 }
 
 ion-button {
+    --box-shadow: none;
     --background: #F1F7FE;
-    border: none;
+    --border: 1px solid #F1F7FE;
+    --font-family: SF Pro Text;
     text-transform: capitalize;
     cursor: pointer;
+    --border-radius: 7px;
+    min-width: 150px;
+    min-height: 50px;
 }
 
 ion-button.delete {
