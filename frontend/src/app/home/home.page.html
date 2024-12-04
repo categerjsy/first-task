@@ -2,7 +2,7 @@
   <ion-toolbar>
     <div class="bar-content">
       <ion-title>
-        Κατηγορίες Φαγητών
+        {{ 'home.page_title' | translate }}
       </ion-title>
       <div class="date-time-display">
         {{ currentDateTime }}
@@ -14,7 +14,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Κατηγορίες Φαγητών</ion-title>
+      <ion-title size="large">{{ 'home.page_title' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -26,7 +26,7 @@
       <ion-col size="2">
         <ion-button (click)="addCategory()">
           <img src="assets/add-category/white/add.svg" alt="Add Category" class="add-category" />
-          Νέα κατηγορία
+          {{ 'home.new_category_button' | translate }}
         </ion-button>
       </ion-col>
     </div>
@@ -35,21 +35,27 @@
         (categoryEdited)="updateCategory($event)" (categoryCreated)="getNewCategory($event)"></app-create-category>
     </div>
 
-    <label class="list">H λίστα σας</label>
+    <label class="list">{{ 'home.category_list_label' | translate }}</label>
     <div class="categories">
       <div *ngIf="searchIt">
-        <app-category *ngFor="let category of filteredCategories;let i=index" [category]="category" (deleteCategory)="getDelete($event,i)"
-          (editCategoryEdit)="editACategory($event)">
+        <app-category *ngFor="let category of filteredCategories; let i = index" [category]="category"
+          (deleteCategory)="getDelete($event, i)" (editCategoryEdit)="editACategory($event)">
         </app-category>
-        <p class="no-category" *ngIf="(filteredCategories.length === 0)">Δεν υπάρχει διαθέσιμη κατηγορία</p>
+        <p class="no-category" *ngIf="(filteredCategories.length === 0)">
+          {{ 'home.no_category_message' | translate }}
+        </p>
       </div>
       <div *ngIf="!searchIt">
-        <app-category *ngFor="let category of categories;let i=index" [category]="category" (deleteCategory)="getDelete($event,i)"
-          (editCategoryEdit)="editACategory($event)"></app-category>
-        <p class="no-category" *ngIf="(categories.length === 0)">Δεν υπάρχουν κατηγορίες, παρακαλούμε προσθέστε</p>
+        <app-category *ngFor="let category of categories; let i = index" [category]="category"
+          (deleteCategory)="getDelete($event, i)" (editCategoryEdit)="editACategory($event)">
+        </app-category>
+        <p class="no-category" *ngIf="(categories.length === 0)">
+          {{ 'home.no_categories_message' | translate }}
+        </p>
       </div>
     </div>
   </div>
+
   <app-custom-alert *ngIf="openAlert" (alertClose)="getCloseAlert($event)" [title]="alertTitle"
     (deleteClose)="deleteOK($event)" [isDelete]="isDelete" [isEdit]="isEdit"></app-custom-alert>
 

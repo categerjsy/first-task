@@ -6,6 +6,7 @@ import { CategorySearchComponent } from '../components/category-search/category-
 import { CreateCategoryComponent } from '../components/create-category/create-category.component';
 import { FormsModule } from '@angular/forms';
 import { CustomAlertComponent } from '../components/custom-alert/custom-alert.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CustomAlertComponent } from '../components/custom-alert/custom-alert.co
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    TranslateModule
   ]
 })
 export class SharedModule { }

@@ -1,11 +1,10 @@
 <div class="create-category">
-
   <div class="header">
     <div class="left-header">
       <img src="assets/add-category/blue/add.svg" *ngIf="!isEdit" />
       <img src="assets/edit-icon/write.svg" *ngIf="isEdit" />
-      <label for="title" class="category-title" *ngIf="!isEdit">Προσθήκη κατηγορίας</label>
-      <label for="title" class="category-title" *ngIf="isEdit">Επεξεργασία κατηγορίας</label>
+      <label for="title" class="category-title" *ngIf="!isEdit">{{ 'category_create.add_category' | translate }}</label>
+      <label for="title" class="category-title" *ngIf="isEdit">{{ 'category_create.edit_category' | translate }}</label>
     </div>
     <img src="assets/close-btn/close.svg" (click)="closeCategory()" />
   </div>
@@ -14,14 +13,15 @@
     <div class="first-line">
       <ion-col size="6">
         <div class="title-input">
-          <label for="title" class="attribute">Τίτλος</label>
-          <ion-input type="text" placeholder="Ο τίτλος σας" class="input" [(ngModel)]="newCategory.title"></ion-input>
+          <label for="title" class="attribute">{{ 'category_create.title' | translate }}</label>
+          <ion-input type="text" [placeholder]="'category_create.placeholder_title' | translate" class="input"
+            [(ngModel)]="newCategory.title"></ion-input>
         </div>
       </ion-col>
       <ion-col size="6">
         <div class="title-input">
-          <label for="title" class="attribute">Υπότιτλος</label>
-          <ion-input type="text" placeholder="Ο uπότιτλος σας" class="input"
+          <label for="title" class="attribute">{{ 'category_create.subtitle' | translate }}</label>
+          <ion-input type="text" [placeholder]="'category_create.placeholder_subtitle' | translate" class="input"
             [(ngModel)]="newCategory.subtitle"></ion-input>
         </div>
       </ion-col>
@@ -29,18 +29,19 @@
   </div>
   <div class="second-line">
     <ion-col size="12">
-      <label for="description" class="attribute">Περιγραφή</label>
-      <ion-textarea placeholder="Περιγραφή κατηγορίας" class="input"
+      <label for="description" class="attribute">{{ 'category_create.description' | translate }}</label>
+      <ion-textarea [placeholder]="'category_create.placeholder_description' | translate" class="input"
         [(ngModel)]="newCategory.description"></ion-textarea>
     </ion-col>
   </div>
   <div class="third-line">
     <ion-col size="3">
-      <ion-button class="submit-btn" fill="solid" (click)="createCategory()" [disabled]="!isFormValid()" *ngIf="!isEdit">
-        Προσθήκη
+      <ion-button class="submit-btn" fill="solid" (click)="createCategory()" [disabled]="!isFormValid()"
+        *ngIf="!isEdit">
+        {{ 'category_create.add_button' | translate }}
       </ion-button>
       <ion-button class="submit-btn" fill="solid" (click)="editACategory()" [disabled]="!isFormValid()" *ngIf="isEdit">
-      Αποθήκευση
+        {{ 'category_create.save_button' | translate }}
       </ion-button>
     </ion-col>
   </div>

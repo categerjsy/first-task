@@ -1,0 +1,41 @@
+{
+  "category_search": {
+    "label": "Αναζήτηση",
+    "placeholder": "Αναζήτηση",
+    "icon_alt_text": "Εικονίδιο Αναζήτησης"
+  },
+  "category_create": {
+    "add_category": "Προσθήκη κατηγορίας",
+    "edit_category": "Επεξεργασία κατηγορίας",
+    "title": "Τίτλος",
+    "subtitle": "Υπότιτλος",
+    "description": "Περιγραφή",
+    "placeholder_title": "Ο τίτλος σας",
+    "placeholder_subtitle": "Ο υπότιτλος σας",
+    "placeholder_description": "Περιγραφή κατηγορίας",
+    "add_button": "Προσθήκη",
+    "save_button": "Αποθήκευση",
+    "close_button": "Κλείσιμο"
+  },
+  "alert": {
+    "close_button": "Κλείσιμο",
+    "continue_button": "Συνέχεια",
+    "cancel_button": "Ακύρωση",
+    "confirm_button": "Επιβεβαίωση",
+    "title_success": "Τέλεια",
+    "title_delete": "Διαγραφή;",
+    "message_default": "Η κατηγορία {{categoryName}} δημιουργήθηκε και αποθηκεύτηκε επιτυχώς.",
+    "message_delete": "Είστε σίγουροι/ες πως επιθυμείτε να διαγράψετε τη κατηγορία {{categoryName}}?",
+    "message_edit": "Οι πληροφορίες της κατηγορίας {{categoryName}} ενημερώθηκαν επιτυχώς.",
+    "delete_confirmation": "Επιβεβαίωση Διαγραφής",
+    "cancel_delete": "Ακύρωση Διαγραφής"
+  },
+    "home": {
+    "page_title": "Κατηγορίες Φαγητών",
+    "current_time": "Ημερομηνία και ώρα",
+    "new_category_button": "Νέα κατηγορία",
+    "category_list_label": "Η λίστα σας",
+    "no_category_message": "Δεν υπάρχει διαθέσιμη κατηγορία",
+    "no_categories_message": "Δεν υπάρχουν κατηγορίες, παρακαλούμε προσθέστε"
+  }
+}

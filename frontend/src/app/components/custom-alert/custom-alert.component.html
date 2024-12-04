@@ -11,26 +11,26 @@
     </div>
 
     <div class="title">
-      <label for="teleia" class="title" *ngIf="!isDelete">Τέλεια</label>
-      <label for="teleia" class="title" *ngIf="isDelete">Διαγραφή;</label>
+      <label for="teleia" class="title" *ngIf="!isDelete">{{ 'alert.title_success' | translate }}</label>
+      <label for="teleia" class="title" *ngIf="isDelete">{{ 'alert.title_delete' | translate }}</label>
     </div>
 
     <div class="subtitle">
-      {{message}}
+      {{ message }}
     </div>
 
     <div class="button-line" *ngIf="!isDelete">
       <ion-button (click)="closeAlert()">
-        Συνέχεια
+        {{ 'alert.continue_button' | translate }}
       </ion-button>
     </div>
 
     <div class="button-line" *ngIf="isDelete">
       <ion-button (click)="closeAlert()">
-        Aκύρωση
+        {{ 'alert.cancel_button' | translate }}
       </ion-button>
       <ion-button class="delete" (click)="deleteCategory()">
-        Επιβεβαίωση
+        {{ 'alert.confirm_button' | translate }}
       </ion-button>
     </div>
 

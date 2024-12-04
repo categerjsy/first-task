@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-custom-alert',
@@ -14,7 +15,7 @@ export class CustomAlertComponent implements OnInit {
 
   @Output() deleteClose = new EventEmitter();
 
-  constructor() {}
+  constructor(private translateService: TranslateService) { }
 
   ngOnInit() {
     this.updateMessage();
@@ -30,27 +31,33 @@ export class CustomAlertComponent implements OnInit {
    */
   updateMessage() {
     if (this.isDelete) {
-      this.message = `Είστε σίγουροι/ες πως επιθυμείτε να διαγράψετε τη κατηγορία ${this.title}?`;
-    } else if (this.isEdit) {
-      this.message = `Οι πληροφορίες της κατηγορίας ${this.title} ενημερώθηκαν επιτυχώς.`;
-    } else {
-      this.message = `Η κατηγορία ${this.title} δημιουργήθηκε και αποθηκεύτηκε επιτυχώς.`;
+      this.translateService.get('alert.message_delete', { categoryName: this.title }).subscribe((res: string) => {
+        this.message = res;
+      });
+      } else if (this.isEdit) {
+      this.translateService.get('alert.message_edit', { categoryName: this.title }).subscribe((res: string) => {
+        this.message = res;
+      });
+      } else {
+      this.translateService.get('alert.message_default', { categoryName: this.title }).subscribe((res: string) => {
+        this.message = res;
+      });
+      }
     }
-  }
-  /*
-  This method emits a boolean value to close the alert
-   */
-  closeAlert() {
-    this.isEdit = false;
-    this.isDelete = false;
-    this.alertClose.emit(false);
-  }
+    /*
+    This method emits a boolean value to close the alert
+     */
+    closeAlert() {
+      this.isEdit = false;
+      this.isDelete = false;
+      this.alertClose.emit(false);
+    }
 
-  /*
-  This method emits a boolean value to delete the category
-   */
-  deleteCategory() {
-    this.deleteClose.emit(true);
-  }
+    /*
+    This method emits a boolean value to delete the category
+     */
+    deleteCategory() {
+      this.deleteClose.emit(true);
+    }
 
-}
+  }
