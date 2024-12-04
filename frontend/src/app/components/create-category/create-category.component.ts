@@ -20,6 +20,11 @@ export class CreateCategoryComponent implements OnInit {
   constructor(private foodCategoryService: FoodCategoryService) { }
 
   ngOnInit() {
+    /*
+    Load categories from JSON file and subscribe to its changes.
+    This allows us to update the categories list in real-time if the JSON file is updated.
+    Note: This method assumes that the JSON file contains an array of category objects.
+    */
     this.foodCategoryService.loadCategoriesFromJSON().subscribe({
       next: (data) => {
         this.categories = data;
@@ -31,6 +36,11 @@ export class CreateCategoryComponent implements OnInit {
     });
   }
 
+  /*
+  This method is called whenever the component's input properties change.
+  If the editCategory input property is provided, it sets the newCategory object to the same value as the editCategory object.
+  This allows the component to display the existing category data when editing an existing category.
+  */
   ngOnChanges(changes: SimpleChanges): void {
     
     if (this.editCategory) {
@@ -40,15 +50,24 @@ export class CreateCategoryComponent implements OnInit {
 
   }
 
+  /*
+  This method is called when the user cloases the create category component
+  */
   closeCategory() {
     this.categoryClosed.emit(false);
   }
-
+  /*
+  This method checks if the form is valid before allowing the user to create or edit a category.
+  If the form is valid, it creates a new category object with the provided title, subtitle, and description.
+  */
   isFormValid(): boolean {
     const { title, subtitle, description } = this.newCategory;
     return !!title?.trim() && !!subtitle?.trim() && !!description?.trim() && !this.categories.some(category => category.title === title);
   }
 
+  /*
+  This method creates a new category or updates an existing category
+  */
   createCategory() {
     if (this.newCategory.title && this.newCategory.subtitle && this.newCategory.description) {
       this.newCategory.title = this.newCategory.title.trim();
@@ -59,6 +78,9 @@ export class CreateCategoryComponent implements OnInit {
     }
   }
 
+/*
+  This method updates the newCategory object with the values from the editCategory input property
+ */
   editACategory() {
     this.editCategory = this.newCategory;
     this.categoryEdited.emit(this.editCategory);

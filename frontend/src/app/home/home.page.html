@@ -38,12 +38,13 @@
     <label class="list">H λίστα σας</label>
     <div class="categories">
       <div *ngIf="searchIt">
-        <app-category *ngFor="let category of filteredCategories" [category]="category">
+        <app-category *ngFor="let category of filteredCategories;let i=index" [category]="category" (deleteCategory)="getDelete($event,i)"
+          (editCategoryEdit)="editACategory($event)">
         </app-category>
         <p class="no-category" *ngIf="(filteredCategories.length === 0)">Δεν υπάρχει διαθέσιμη κατηγορία</p>
       </div>
       <div *ngIf="!searchIt">
-        <app-category *ngFor="let category of categories" [category]="category" (deleteCategory)="getDelete($event)"
+        <app-category *ngFor="let category of categories;let i=index" [category]="category" (deleteCategory)="getDelete($event,i)"
           (editCategoryEdit)="editACategory($event)"></app-category>
         <p class="no-category" *ngIf="(categories.length === 0)">Δεν υπάρχουν κατηγορίες, παρακαλούμε προσθέστε</p>
       </div>

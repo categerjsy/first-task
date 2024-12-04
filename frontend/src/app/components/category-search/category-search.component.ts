@@ -12,10 +12,14 @@ export class CategorySearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit() { }
-  
 
-  onSearchChange(event: any) {
-    this.search.emit(event.target.value); 
-  }
+/*
+  This method is called whenever the user types in the search bar.
+  It emits the search term to the parent component.
+ */
+
+onSearchChange(event: any) {
+  this.search.emit(event.target.value); 
+}
 
 }

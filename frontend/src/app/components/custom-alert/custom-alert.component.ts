@@ -13,9 +13,8 @@ export class CustomAlertComponent implements OnInit {
   @Input() isEdit: boolean = false;
 
   @Output() deleteClose = new EventEmitter();
-  constructor() {
 
-  }
+  constructor() {}
 
   ngOnInit() {
     this.updateMessage();
@@ -26,6 +25,9 @@ export class CustomAlertComponent implements OnInit {
       this.updateMessage();
     }
   }
+  /*
+  This method updates the message property
+   */
   updateMessage() {
     if (this.isDelete) {
       this.message = `Είστε σίγουροι/ες πως επιθυμείτε να διαγράψετε τη κατηγορία ${this.title}?`;
@@ -35,12 +37,18 @@ export class CustomAlertComponent implements OnInit {
       this.message = `Η κατηγορία ${this.title} δημιουργήθηκε και αποθηκεύτηκε επιτυχώς.`;
     }
   }
+  /*
+  This method emits a boolean value to close the alert
+   */
   closeAlert() {
     this.isEdit = false;
     this.isDelete = false;
     this.alertClose.emit(false);
   }
 
+  /*
+  This method emits a boolean value to delete the category
+   */
   deleteCategory() {
     this.deleteClose.emit(true);
   }

@@ -20,12 +20,15 @@ export class HomePage implements OnInit {
   filteredCategories: Category[] = [];
   searchTerm: string = '';
   searchIt: boolean = false;
+  deleteCategoryIndex: number | null = null;
 
   constructor(private foodCategoryService: FoodCategoryService) {
 
   }
 
   ngOnInit() {
+    // Load categories from JSON file
+
     this.foodCategoryService.loadCategoriesFromJSON().subscribe({
       next: (data) => {
         this.categories = data;
@@ -54,6 +57,9 @@ export class HomePage implements OnInit {
     }
   }
 
+  /*
+This method sets the current date-time in every second
+  */
   setCurrentDateTime() {
     const now = new Date();
     const day = String(now.getDate()).padStart(2, '0');
@@ -65,15 +71,23 @@ export class HomePage implements OnInit {
     this.currentDateTime = `${day}/${month}/${year} ${hours}:${minutes}`;
   }
 
+  /*
+  This displays the create-category component
+   */
   addCategory() {
     this.createCategory = true;
     this.isEdit = false;
     this.editCategory = undefined;
   }
+  /*
+  This method handles the closing of the create-category component and updates the alert accordingly
+  */
   getClose($event: any) {
     this.createCategory = $event;
   }
-
+  /*
+  This method handles the closing of the alert and updates the categories accordingly
+  */
   getNewCategory($event: Category) {
     this.categories.push($event);
     this.createCategory = false;
@@ -81,9 +95,15 @@ export class HomePage implements OnInit {
     this.alertTitle = this.categories[this.categories.length - 1].title;
   }
 
+  /*
+  This method handles the closing of the delete-category component and updates the alert accordingly
+  */
   getCloseAlert($event: any) {
     this.openAlert = false;
   }
+  /*
+  This method handles the opening of the edit a category
+   */
   editACategory($event: any) {
     this.isEdit = true;
     console.log(this.isEdit);
@@ -92,34 +112,52 @@ export class HomePage implements OnInit {
     this.createCategory = true;
   }
 
+  /*
+    This method updates the category list
+     */
   updateCategory($event: any) {
     const index = this.categories.findIndex((cat) => cat.id === $event.id);
-
     this.categories[index] = $event;
-    console.log('Category updated:', this.categories[index]);
-
-
     this.createCategory = false;
     this.editCategory = undefined;
     this.openAlert = true;
     this.alertTitle = this.categories[index].title;
   }
 
-  getDelete($event: any) {
+  /*
+  This method handles the closing of the delete-category component and updates the alert accordingly
+  */
+  getDelete($event: any, index: number) {
     this.isDelete = true;
     this.openAlert = true;
     this.deleteCategory = $event;
     this.alertTitle = this.deleteCategory?.title;
-    console.log('delete category:', $event);
+    this.deleteCategoryIndex = index;
   }
+
+
+  /*
+  This method updates the list of categories after deleting
+  */
 
   deleteOK($event: any) {
     this.openAlert = false;
-    const index = this.categories.findIndex((cat) => cat.id === this.deleteCategory?.id);
-    this.categories.splice(index, 1);
+    if (this.deleteCategoryIndex !== null) {
+      this.categories.splice(this.deleteCategoryIndex, 1);
+    }
+    //updating filtered categories
+    if (this.searchIt) {
+      this.filteredCategories = this.categories.filter((category) =>
+        category.title?.toLowerCase().includes(this.searchTerm.toLowerCase().trim()) ||
+        category.subtitle?.toLowerCase().includes(this.searchTerm.toLowerCase().trim())
+      );
+    }
     this.isDelete = false;
   }
 
+  /*
+    This method handles the search
+   */
   getSearch($event: string) {
     this.searchTerm = $event;
     console.log('search term:', $event);

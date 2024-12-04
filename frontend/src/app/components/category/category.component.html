@@ -2,17 +2,19 @@
 
   <div class="header">
     <ion-col size="10">
-      <div class="header-titles">
-        <label for="title" class="category-title">{{category?.title}}</label>
-        <label for="subtitle" class="category-subtitle">{{category?.subtitle}}</label>
+      <div *ngIf="category">
+        <div class="header-titles" *ngIf="category.title && category.subtitle">
+          <label for="title" class="category-title">{{ category.title }}</label>
+          <label for="subtitle" class="category-subtitle">{{ category.subtitle }}</label>
+        </div>
       </div>
     </ion-col>
     <ion-col size="2" class="ion-text-right">
       <ion-col size="1">
-        <img src="assets/edit-icon/write.svg" class="cursor" (click)="edit()"/>
+        <img src="assets/edit-icon/write.svg" class="cursor" (click)="edit()" />
       </ion-col>
       <ion-col size="1">
-        <img src="assets/delete-bucket/delete.svg" class="cursor" (click)="delete()"/>
+        <img src="assets/delete-bucket/delete.svg" class="cursor" (click)="delete()" />
       </ion-col>
     </ion-col>
   </div>
